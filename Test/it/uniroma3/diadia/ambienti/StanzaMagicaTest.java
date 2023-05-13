@@ -1,40 +1,51 @@
 package it.uniroma3.diadia.ambienti;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-class StanzaMagicaTest {
+public class StanzaMagicaTest {
 	private StanzaMagica stanzaMagica;
-	private Attrezzo attrezzo1;
-	
+	private int sogliaMagica;
+	private Attrezzo attrezzo;
+
 	@BeforeEach
-	void setUp() {
-		this.stanzaMagica = new StanzaMagica("stanza magica",1);
-		this.attrezzo1 = new Attrezzo("lanterna", 3);
+	void setUp() throws Exception{
+		this.stanzaMagica = new StanzaMagica("stanza");
+		this.sogliaMagica = 3;
+		this.attrezzo = new Attrezzo("lanterna", 1);
 	}
 
 	@Test
-	void testIsMagic() {
-		assertTrue(this.stanzaMagica.addAttrezzo(attrezzo1));
-		assertSame(this.stanzaMagica.getAttrezzo("lanterna"), this.attrezzo1);
+	final void testIsNotMagic() {
+		assertTrue(this.stanzaMagica.addAttrezzo("lanterna",1));
+		assertEquals(this.stanzaMagica.attrezzi.get("lanterna"), this.attrezzo);
 	}
-	
+
 	@Test
-	void testIsNotMagic() {
-		for(int i=0; i<StanzaMagica.SOGLIA_MAGICA_DEFAULT-1; i++) {
-			Attrezzo attrezzoI = new Attrezzo("attrezzo"+i,1);
-			assertTrue(this.stanzaMagica.addAttrezzo(attrezzoI));
-		}
-		Attrezzo maggico = new Attrezzo("maggico",1);
-		this.stanzaMagica.addAttrezzo(maggico);
-		assertNull(this.stanzaMagica.getAttrezzo("maggico"));
-		Attrezzo ogicam = this.stanzaMagica.getAttrezzo("ociggam");
-		assertNotNull(ogicam);
-		assertEquals(new Attrezzo("ociggam", 2), ogicam);
+	final void testAddAttrezzo() {
+		assertTrue(this.stanzaMagica.addAttrezzo("lanterna",1));
 	}
+
+	@Test
+	final void testIsMagic() {
+		for(int i=0; i<StanzaMagica.SOGLIA_MAGICA_DEFAULT; i++) {
+			assertTrue(this.stanzaMagica.addAttrezzo("attrezzo",1));
+		}
+		this.stanzaMagica.addAttrezzo("magico",1);
+		assertNull(this.stanzaMagica.attrezzi.get("magico"));
+		Attrezzo ocigam = this.stanzaMagica.attrezzi.get("ocigam");
+		assertNotNull(ocigam);
+		assertEquals(new Attrezzo("ocigam", 2), ocigam);
+	}
+
+	@Test
+	final void testTroppiAttrezzi() {
+		for(int i=0; i<StanzaMagica.NUMERO_MASSIMO_ATTREZZI; i++) {
+			assertTrue(this.stanzaMagica.addAttrezzo("attrezzo"+i,1));
+		}
+		assertFalse(this.stanzaMagica.addAttrezzo("lanterna",1));
+	}	
 }
-	

@@ -12,15 +12,14 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 public class Labirinto {
 	
 	private Stanza stanzaIniziale;
+	
 	public Stanza getStanzaIniziale() {
 		return stanzaIniziale;
 	}
 
-
 	public void setStanzaIniziale(Stanza stanzaIniziale) {
 		this.stanzaIniziale = stanzaIniziale;
 	}
-
 
 	public Stanza getStanzaFinale() {
 		return stanzaFinale;
@@ -43,10 +42,6 @@ public class Labirinto {
 	 * Crea tutte le stanze e le porte del labirinto
 	 */
 	private void creaStanze() {
-
-		/* crea gli attrezzi */
-    	Attrezzo lanterna = new Attrezzo("lanterna",3);
-		Attrezzo osso = new Attrezzo("osso",1);
     	
 		/* crea stanze del labirinto */		//responsabilità spostabile in un file
 		Stanza atrio = new Stanza("Atrio");		//labirinto
@@ -70,8 +65,8 @@ public class Labirinto {
 		biblioteca.impostaStanzaAdiacente("sud", atrio);
 
         /* pone gli attrezzi nelle stanze */
-		aulaN10.addAttrezzo(lanterna);
-		atrio.addAttrezzo(osso);
+		aulaN10.addAttrezzo("lanterna",3);
+		atrio.addAttrezzo("osso",1);
 		
 		
 		//il labirinto inizia nell'atrio e finisce nella biblioteca;
@@ -79,7 +74,6 @@ public class Labirinto {
 		setStanzaIniziale(atrio);
 		setStanzaFinale(biblioteca);
 	
-		
     }
 	
 }

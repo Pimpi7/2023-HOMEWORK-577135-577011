@@ -12,7 +12,6 @@ class ComandoGuardaTest {
 	private Stanza stanza1;
 	private Partita partita;
 	private Stanza stanza2;
-	private Attrezzo attrezzo1;
 	private Attrezzo attrezzo2;
 
 
@@ -22,8 +21,7 @@ class ComandoGuardaTest {
 		this.stanza1 = new Stanza("stanza1");
 		this.partita.setStanzaCorrente(stanza1);
 		this.stanza1.impostaStanzaAdiacente("nord", stanza2);
-		this.attrezzo1 = new Attrezzo("osso", 1);
-		this.partita.getStanzaCorrente().addAttrezzo(attrezzo1);
+		this.partita.getStanzaCorrente().addAttrezzo("osso",1);
 		this.attrezzo2 = new Attrezzo("lanterna", 4);
 		this.partita.getGiocatore().getBorsa().addAttrezzo(attrezzo2);
 		this.partita.getGiocatore().getCfu();

@@ -23,7 +23,7 @@ public class ComandoPrendi implements Comando {
 			this.io.mostraMessaggio("Quale attrezzo vuoi prendere?");
 		else {
 			Attrezzo toTakeAttrezzo = null;
-			toTakeAttrezzo = partita.getStanzaCorrente().getAttrezzo(nomeAttrezzo);
+			toTakeAttrezzo = partita.getStanzaCorrente().attrezzi.get(nomeAttrezzo);
 			if(toTakeAttrezzo == null)
 				this.io.mostraMessaggio("Attrezzo inesistente");
 			else {

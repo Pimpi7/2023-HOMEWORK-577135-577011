@@ -5,17 +5,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 class StanzaBuiaTest {
 	
 	private StanzaBuia stanza;
-	private Attrezzo attrezzo;
 	
 	@BeforeEach
 	void setUp() {
-		stanza = new StanzaBuia("stanza buia");
-		attrezzo = new Attrezzo("osso",1);
+		stanza = new StanzaBuia("stanza buia","osso");
 	}
 
 	@Test
@@ -26,7 +23,7 @@ class StanzaBuiaTest {
 	
 	@Test
 	void testConAttrezzoCercato() {
-		this.stanza.addAttrezzo(attrezzo);
+		this.stanza.addAttrezzo("osso",1);
 		this.stanza.getDescrizione();
 		System.out.println(this.stanza.getDescrizione());
 	}

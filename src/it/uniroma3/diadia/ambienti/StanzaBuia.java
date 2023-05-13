@@ -5,14 +5,15 @@ public class StanzaBuia extends Stanza{
 	
 	private String attrezzoRichiesto;
 	
-	public StanzaBuia(String nome) {
+	
+	public StanzaBuia(String nome, String attrezzoPerVedere) {
 		super(nome);
-		this.attrezzoRichiesto = "lanterna";
+		this.attrezzoRichiesto = attrezzoPerVedere;
 	}
 	
 	@Override
 	public String getDescrizione() {
-		if(hasAttrezzo(attrezzoRichiesto))
+		if(attrezzi.containsKey(attrezzoRichiesto))
 			return super.toString();
 		else
 			return "Qui c'è buio pesto";
