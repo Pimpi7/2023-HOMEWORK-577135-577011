@@ -7,6 +7,7 @@ public class IOConsole implements IO{
 		System.out.println(msg);
 	}
 	public String leggiRiga() {
+		@SuppressWarnings("resource")
 		Scanner scannerDiLinee = new Scanner(System.in);
 		String riga = scannerDiLinee.nextLine();
 		//scannerDiLinee.close();

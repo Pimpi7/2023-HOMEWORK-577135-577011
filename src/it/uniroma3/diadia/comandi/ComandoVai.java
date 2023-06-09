@@ -1,18 +1,20 @@
 package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.IO;
-import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 
-public class ComandoVai implements Comando{
+public class ComandoVai extends AbstractComando{
 	private IO io;
 	private String direzione;
-	private String nome;
+	private String nome = "vai";
 	
 	public ComandoVai(String direzione) {
 		this.direzione = direzione;
-		this.io = new IOConsole();
+		this.nome = new String("vai");
+	}
+	
+	public ComandoVai() {
 		this.nome = new String("vai");
 	}
 	
@@ -52,5 +54,10 @@ public class ComandoVai implements Comando{
 	@Override
 	public String getNome() {
 		return nome;
+	}
+
+	@Override
+	public void setIO(IO io) {
+		this.io = io;
 	}
 }

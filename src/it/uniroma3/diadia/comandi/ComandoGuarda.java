@@ -4,7 +4,7 @@ import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 
-public class ComandoGuarda implements Comando {
+public class ComandoGuarda extends AbstractComando {
 	private IO io;
 	private String nome;
 	
@@ -22,16 +22,13 @@ public class ComandoGuarda implements Comando {
 	}
 
 	@Override
-	public void setParametro(String parametro) {}
-
-	@Override
-	public String getParametro() {
-		return null;	
+	public String getNome() {
+		return this.nome;
 	}
 
 	@Override
-	public String getNome() {
-		return this.nome;
+	public void setIO(IO io) {
+		this.io = io;
 	}
 
 }

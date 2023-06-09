@@ -1,18 +1,20 @@
 package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.IO;
-import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-public class ComandoPosa implements Comando{
+public class ComandoPosa extends AbstractComando {
 	private String nome;
 	private IO io;
 	private String nomeAttrezzo;
 
 	public ComandoPosa(String nomeAttrezzo) {
 		this.nomeAttrezzo = nomeAttrezzo;
-		this.io = new IOConsole();
+		this.nome = new String("posa");
+	}
+	
+	public ComandoPosa() {
 		this.nome = new String("posa");
 	}
 
@@ -48,5 +50,10 @@ public class ComandoPosa implements Comando{
 	@Override
 	public String getNome() {
 		return nome;
+	}
+
+	@Override
+	public void setIO(IO io) {
+		this.io = io;
 	}
 }

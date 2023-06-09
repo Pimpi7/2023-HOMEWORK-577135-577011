@@ -56,6 +56,7 @@ public class StanzaProtected {
 		Iterator<Stanza> iS = this.stanzeAdiacenti.iterator();
 		Iterator<String> iD = this.direzioni.iterator();
 		while(iD.hasNext() && iS.hasNext()) {
+			@SuppressWarnings("unused")
 			Stanza stanzaAttuale = iS.next();
 			String direzioneAttuale = iD.next();
 			if(direzione.equals(direzioneAttuale)) {

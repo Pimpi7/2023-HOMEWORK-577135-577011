@@ -3,7 +3,9 @@ package it.uniroma3.diadia.comandi;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -13,11 +15,12 @@ class ComandoGuardaTest {
 	private Partita partita;
 	private Stanza stanza2;
 	private Attrezzo attrezzo2;
+	private Labirinto labirinto;
 
 
 	@BeforeEach
 	void setUp(){
-		this.partita = new Partita();
+		this.partita = new Partita( labirinto);
 		this.stanza1 = new Stanza("stanza1");
 		this.partita.setStanzaCorrente(stanza1);
 		this.stanza1.impostaStanzaAdiacente("nord", stanza2);
@@ -30,6 +33,7 @@ class ComandoGuardaTest {
 	@Test
 	void testGuarda() {
 		this.comando = new ComandoGuarda();
+		this.comando.setIO(new IOConsole());
 		comando.esegui(partita);
 	}
 
